@@ -4,9 +4,6 @@
 # SERVER_IP
 add_rules()
 {
-    #curl 'https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt' > cn_ipv4.list
-    curl 'http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest' | grep ipv4 | grep CN | awk -F\| '{ printf("%s/%d\n", $4, 32-log($5)/log(2)) }' > cn_ipv4.list
-    wait
     CHAIN_NAME='BYPASSLIST'
 
     del_rules
@@ -24,20 +21,6 @@ add_rules()
     ipset add chnlist 192.168.0.0/16
     ipset add chnlist 224.0.0.0/4
     ipset add chnlist 240.0.0.0/4
-
-    for ip in $(cat cn_ipv4.list)
-    do
-        ipset add chnlist $ip
-    done
-    echo 'ipset done.'
-
-    # Add server IP
-    if [ -n "$SERVER_IP" ]
-    then
-        echo "Your server IP is $SERVER_IP"
-    else
-        read -p "Please set server IP:" SERVER_IP
-    fi
 
     # 1. TCP
     # TCP new chain $CHAIN_NAME
@@ -65,6 +48,24 @@ add_rules()
     iptables -t mangle -A PREROUTING -p udp -j $CHAIN_NAME
 
     echo 'Done.'
+
+    #curl 'https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt' > cn_ipv4.list
+    curl 'http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest' | grep ipv4 | grep CN | awk -F\| '{ printf("%s/%d\n", $4, 32-log($5)/log(2)) }' > cn_ipv4.list
+    wait
+    
+    for ip in $(cat cn_ipv4.list)
+    do
+        ipset add chnlist $ip
+    done
+    echo 'ipset done.'
+
+    # Add server IP
+    if [ -n "$SERVER_IP" ]
+    then
+        echo "Your server IP is $SERVER_IP"
+    else
+        read -p "Please set server IP:" SERVER_IP
+    fi
 }
 
 del_rules()
