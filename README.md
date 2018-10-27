@@ -1,3 +1,8 @@
+> 我在原作者的基础上做了一点优化，如下：
+> 1. 把 iptables.sh 的执行顺序换了下，以加快可用性。原先 USG 启动至少3分钟后才能翻，现在1分钟左右即可——主要是更新 chnlist 比较耗时
+> 2. 建议在每一次设置完 ss server 后，把 iptables.sh 第4行前的#去掉，且改为SERVER_IP=你的 ss server IP
+> 3. 依次执行的内容有细化，方便和我一样的小白:)
+
 # ubnt-router-shadowsocks  
 在 usg，edgerouter 等设备上安装 ss 的脚本，包括 dnsmasq 配置，以及 iptables，国内 ip 走直连，除此以外默认走代理。
 
