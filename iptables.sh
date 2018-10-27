@@ -12,7 +12,7 @@ add_rules()
     del_rules
     # Add new ipset
     ipset destroy chnlist
-    ipset -N chnlist hash:net maxelem 65536
+    ipset create chnlist hash:net maxelem 65536
 
     echo 'ipset processing...'
     ipset add chnlist $SERVER_IP
