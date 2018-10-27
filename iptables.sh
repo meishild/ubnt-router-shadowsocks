@@ -69,7 +69,7 @@ add_rules()
 
 del_rules()
 {
-    ipset destroy chnroute
+    ipset destroy chnlist
     iptables -t nat -F $CHAIN_NAME
     iptables -t nat -X $CHAIN_NAME
     echo 'Del_rules Done.'
