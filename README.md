@@ -31,17 +31,23 @@ git clone https://github.com/imMMX/ubnt-router-shadowsocks.git
 ```  
 依次执行 
 ```
+cd ubnt-router-shadowsocks
 ./install.sh
 ./dnsmasqchn.sh
 ./iptables.sh add_rules
+cp tproxy/erl3/tx_TPROXY.ko /lib/modules/`uname -r`/extra/
+depmod
+modprobe xt_TPROXY
 ```
+这里要注意下，我实际测试发现原作者放在tproxy/usg/下的 tx_TPROXY 在 USG 下不能用，erl3 的反倒可以！
+
 修改 /etc/rc.local，确保重启后 1.自动更新 iptabless 2.创建 supervisor 的日志目录（重启后消失） 3.加载 UDP 模块
 ```
 mkdir -p /var/log/supervisor/
 supervisord
 
 sleep 10
-/root/install.sh add_rules
+/root/ubnt-router-shadowsocks/iptables.sh add_rules
 wait
 modprobe xt_TPROXY
 ```
