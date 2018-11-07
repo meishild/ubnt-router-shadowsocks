@@ -48,7 +48,7 @@ cd ubnt-router-shadowsocks
 ./install.sh
 ./dnsmasqchn.sh
 ./iptables.sh add_rules
-cp tproxy/erl3/tx_TPROXY.ko /lib/modules/`uname -r`/extra/
+cp tproxy/erl3/xt_TPROXY.ko /lib/modules/`uname -r`/extra/
 depmod
 modprobe xt_TPROXY
 ```
@@ -93,6 +93,8 @@ RETURN     tcp  --  anywhere             anywhere             match-set chnlist 
 ```
 uname -a
 wget https://github.com/imMMX/ubnt-mips-shadowsocks-libev/releases/download/3.2.0/ss-mips64.zip
+unzip ss-mips64.zip
+
 ```
 
 4. 启动 supervisord  
