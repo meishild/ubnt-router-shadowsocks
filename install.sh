@@ -12,7 +12,7 @@ select method in "chacha20-ietf-poly1305" "aes-128-gcm" "chacha20" "rc4-md5" "sa
     chacha20 )SERVER_METHOD="chacha20";break;;
     rc4-md5 )SERVER_METHOD="rc4-md5";break;;
     salsa20 )SERVER_METHOD="salsa20";break;;
-    aes-256-cf )SERVER_METHOD="aes-256-cfb";break;;
+    aes-256-cfb )SERVER_METHOD="aes-256-cfb";break;;
   esac
 done
 echo $SERVER_METHOD
