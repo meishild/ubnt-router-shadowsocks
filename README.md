@@ -96,7 +96,7 @@ RETURN     tcp  --  anywhere             anywhere             match-set chnlist 
 uname -a
 wget https://github.com/imMMX/ubnt-mips-shadowsocks-libev/releases/download/3.2.0/ss-mips64.zip
 unzip ss-mips64.zip
-
+cp ss-bin/bin/ss-redir ss-bin/bin/ss-tunnel /usr/bin/
 ```
 
 4. 启动 supervisord  
