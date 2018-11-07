@@ -52,7 +52,9 @@ cp tproxy/erl3/xt_TPROXY.ko /lib/modules/`uname -r`/extra/
 depmod
 modprobe xt_TPROXY
 ```
-> 这里要注意下，**我实测发现原作者 @imMMX 放在tproxy/usg/下的 tx_TPROXY 在 USG 下不能用，erl3 的反倒可以！**
+> 这里要注意下，**原作者install.sh中第15行aes-256-cf )需要修改为为aes-256-cfb，否则选项6始终通不过**
+
+> 另外，**我实测发现原作者 @imMMX 放在tproxy/usg/下的 tx_TPROXY 在 USG 下不能用，erl3 的反倒可以！**
 
 修改 /etc/rc.local，确保重启后 1.自动更新 iptabless 2.创建 supervisor 的日志目录（重启后消失） 3.加载 UDP 模块
 ```
