@@ -30,6 +30,11 @@ sudo -i
 apt-get update
 apt-get install git wget supervisor
 ```
+> 这里要注意下，建议将 http://http.us.debian.org/debian 替换为国内源（我在这里浪费很多时间等待）
+> 源一[中科大]： http://ftp.cn.debian.org/debian/
+> 源二[清华]： http://ftp2.cn.debian.org/debian/
+> 更多参见 https://www.debian.org/mirror/list.zh-cn.html
+
 2. 下载仓库文件并执行脚本  
 ```
 git clone https://github.com/imMMX/ubnt-router-shadowsocks.git
