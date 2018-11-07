@@ -56,9 +56,7 @@ modprobe xt_TPROXY
 
 > 另外，**我实测发现原作者 @imMMX 放在tproxy/usg/下的 tx_TPROXY 在 USG 下不能用，erl3 的反倒可以！**
 
-> 再：网上说tproxy内核模块其实edgeos系统自带，在/lib/modules/`uname -r`/kernel/net/netfilter/nf_tproxy_core.ko 
-
-> 但系统没有自动加载，需要自己modprobe —— 所以我理解modprobe nf_tproxy_core也可以，具体自行尝试
+> 再：网上说tproxy内核模块其实edgeos系统自带，在/lib/modules/3.10.20-UBNT/kernel/net/netfilter/nf_tproxy_core.ko ，但系统没有自动加载，需要自己modprobe —— 所以我理解modprobe nf_tproxy_core也可以，具体自行尝试
 
 修改 /etc/rc.local，确保重启后 1.自动更新 iptabless 2.创建 supervisor 的日志目录（重启后消失） 3.加载 UDP 模块
 ```
