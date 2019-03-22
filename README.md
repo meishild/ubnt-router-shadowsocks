@@ -22,9 +22,9 @@
 [EdgeRouter-Add-other-Debian-packages-to-EdgeOS](https://help.ubnt.com/hc/en-us/articles/205202560-EdgeRouter-Add-other-Debian-packages-to-EdgeOS)  
 ```
 configure
-set system package repository wheezy components 'main contrib non-free' 
-set system package repository wheezy distribution wheezy 
-set system package repository wheezy url http://http.us.debian.org/debian
+set system package repository stretch components 'main contrib non-free' 
+set system package repository stretch distribution stretch
+set system package repository stretch url http://http.us.debian.org/debian
 commit ; save
 sudo -i
 apt-get update
